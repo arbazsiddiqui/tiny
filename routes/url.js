@@ -24,4 +24,15 @@ router.post('/createUrl', function(req, res) {
   return res.json(data);
 });
 
+router.get('/getUrl/:url', function(req, res) {
+  var url = req.params.url;
+  client.get(url, function(err, reply) {
+    if (reply != null) {
+      return res.json(reply)
+    } else {
+      res.send('Not found');
+    }
+  });
+});
+
 module.exports = router;
